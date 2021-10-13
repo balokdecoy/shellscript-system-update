@@ -8,7 +8,8 @@ function yes_or_no {
 			[Yy]*) echo 'See you in a sec...'; 
 				shutdown -r 0 ;;
 			[Nn]*) echo "Goodbye!" ; return 0 ;;
-			* ) echo "Please answer yes or no." ;;
+			* ) echo "Please answer yes or no.";
+				yes_or_no "Would you like to restart now?" ;;
 		esac
 }
 
@@ -20,7 +21,8 @@ function upgrade_yn {
 				yes_or_no "Would you like to restart now?" ;;
 			[Nn]*) echo 'Updated package lists without installing.' ;
 				return 0 ;;
-			* ) echo 'Please answer yes or no.' ;;
+			* ) echo 'Please answer yes or no.';
+				upgrade_yn "Would you like to install the updates?" ;;
 		esac
 }
 
